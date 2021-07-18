@@ -65,4 +65,5 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:2.4.0-alpha04")
 
     implementation ("com.google.accompanist:accompanist-systemuicontroller:0.14.0")
+    implementation("io.coil-kt:coil-compose:1.3.0")
 }
