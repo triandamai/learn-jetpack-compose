@@ -9,14 +9,17 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
+import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.trian.moviesappcompose.ui.common.Router
 import com.trian.moviesappcompose.ui.theme.MoviesAppComposeTheme
 
 class MainActivity : ComponentActivity() {
+    @ExperimentalPagerApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -33,8 +36,9 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
                     val navHostController = rememberNavController()
+                    val coroutineScope= rememberCoroutineScope()
                     Scaffold {
-                        Router(navController = navHostController)
+                        Router(navController = navHostController,coroutineScope= coroutineScope)
                     }
                 }
             }

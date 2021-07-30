@@ -80,10 +80,7 @@ fun LibraryAppBar(onNavigation:()->Unit){
 }
 
 @Composable
-fun TextTab(){
-    var tabIndex by remember {
-        mutableStateOf(0)
-    }
+fun TextTab(tabSelected:Int,onSelected:(index:Int)->Unit){
 
     val tabData = listOf(
         "Movies",
@@ -91,11 +88,11 @@ fun TextTab(){
     )
     TabRow(
         backgroundColor= Color.White,
-        selectedTabIndex = tabIndex,
+        selectedTabIndex = tabSelected,
         indicator = {
         tabPositions ->
         TabRowDefaults.Indicator(
-            modifier = Modifier.customTabIndicatorOffset(tabPositions[tabIndex]).clip(shape = RoundedCornerShape(topStart = 16.dp,topEnd = 16.dp)),
+            modifier = Modifier.customTabIndicatorOffset(tabPositions[tabSelected]).clip(shape = RoundedCornerShape(topStart = 16.dp,topEnd = 16.dp)),
             height = 4.dp,
             color = Color.Red
         )
@@ -104,12 +101,12 @@ fun TextTab(){
             tabData.forEachIndexed{
                     index, text ->
                 Tab(
-                    selected = tabIndex == index,
-                    onClick = { tabIndex = index },
+                    selected = tabSelected == index,
+                    onClick = { onSelected(index) },
                     text = {
                         Text(
                             text = text,
-                            color = when(tabIndex){
+                            color = when(tabSelected){
                                 index-> Color.Red
                                 else -> Color.DarkGray
                             },
@@ -167,7 +164,7 @@ fun Modifier.customTabIndicatorOffset(
 @Preview
 @Composable
 fun previewTextTab() {
-    TextTab()
+    TextTab(1,{})
 }
 @Preview
 @Composable
