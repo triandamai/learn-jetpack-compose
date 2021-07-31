@@ -22,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.trian.moviesappcompose.data.models.MovieModel
 
 
 @Composable
@@ -39,11 +40,11 @@ fun BaseSection(title: String,onViewAll:()->Unit) {
 }
 
 @Composable
-fun DashboardSection(title: String, onClick: (index: Int) -> Unit,onViewAll:()->Unit) {
+fun DashboardSection(title: String,listmovie:List<MovieModel>, onClick: (index: Int) -> Unit,onViewAll:()->Unit) {
     Column(modifier = Modifier.background(color = Color.White)) {
        BaseSection(title = title,onViewAll = {onViewAll()})
         LazyRow{
-            items(10){
+            items(listmovie.size){
                     index:Int->
                 ItemSection(index = index,"Ini Judul",onClick = {onClick(index)})
             }
@@ -57,11 +58,11 @@ fun DashboardSection(title: String, onClick: (index: Int) -> Unit,onViewAll:()->
 }
 
 @Composable
-fun SectionRelatedMovie(title:String,onClick: (index: Int) -> Unit,onViewAll:()->Unit) {
+fun SectionRelatedMovie(title:String, listmovie: List<MovieModel>, onClick: (index: Int) -> Unit, onViewAll:()->Unit) {
     Column(modifier = Modifier.background(color = Color.White)) {
         BaseSection(title = title,onViewAll = {onViewAll()})
         LazyRow{
-            items(10){
+            items(listmovie.size){
                     index:Int->
                 ItemSectionRelatedMovie(index = index,"Ini Judul",onClick = {onClick(index)})
             }
@@ -82,10 +83,10 @@ fun previewSection() {
 @Preview
 @Composable
 fun previewDashSection() {
-    DashboardSection(title = "ini Section",{}){}
+    DashboardSection(title = "ini Section", listOf(),{}){}
 }
 @Preview
 @Composable
 fun previewSectionRelated() {
-    SectionRelatedMovie(title = "",{}){}
+    SectionRelatedMovie(title = "", listOf(),{}){}
 }

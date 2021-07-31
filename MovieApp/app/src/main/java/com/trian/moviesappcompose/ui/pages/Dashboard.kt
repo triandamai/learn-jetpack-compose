@@ -8,14 +8,18 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.trian.moviesappcompose.data.MovieViewModel
 import com.trian.moviesappcompose.ui.common.*
 import kotlinx.coroutines.CoroutineScope
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 /*
 * Created by: Trian Damai
@@ -24,7 +28,8 @@ import kotlinx.coroutines.CoroutineScope
 * www.trian.app
 * */
 @Composable
-fun Dashboard(modifier: Modifier = Modifier, nav: NavHostController,scope:CoroutineScope) {
+fun Dashboard(modifier: Modifier = Modifier, nav: NavHostController,scope:CoroutineScope,viewModel: MovieViewModel = viewModel()) {
+    val listMovie by viewModel.getListMovie.observeAsState()
     Scaffold(topBar = {
         DashboardAppBar {
 
@@ -45,6 +50,7 @@ fun Dashboard(modifier: Modifier = Modifier, nav: NavHostController,scope:Corout
             }
             DashboardSection(
                 title = "Whats's New",
+                listmovie= listMovie,
                 onClick = {
 
                     nav.navigate(Router.DetailMovie.name)
@@ -54,6 +60,7 @@ fun Dashboard(modifier: Modifier = Modifier, nav: NavHostController,scope:Corout
                 })
             DashboardSection(
                 title = "Recomended for you",
+                listmovie= listMovie,
                 onClick = {
 
                     nav.navigate(Router.DetailMovie.name)
