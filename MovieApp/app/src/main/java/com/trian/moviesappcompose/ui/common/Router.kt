@@ -25,7 +25,7 @@ fun Router(navController: NavHostController,coroutineScope: CoroutineScope){
             Library(nav = navController,coroutineScope=coroutineScope)
         }
         composable(Router.DetailMovie.name){
-            DetailMovie()
+            DetailMovie(nav = navController,scope=coroutineScope)
         }
     }
 }

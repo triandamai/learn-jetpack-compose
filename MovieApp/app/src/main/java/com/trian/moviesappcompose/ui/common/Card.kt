@@ -41,7 +41,23 @@ fun ImageScroll(index: Int) {
     Spacer(modifier = Modifier.width(16.dp))
 
 }
+@Composable
+fun ImageHeaderDetailMovie() {
 
+    Image(
+        contentScale = ContentScale.FillBounds,
+        painter = painterResource(id = R.drawable.marvel),
+        contentDescription = "",
+        modifier = Modifier
+            .clickable { }
+            .fillMaxWidth()
+            .height(200.dp)
+            .padding(top = 4.dp, bottom = 4.dp)
+            .clip(shape = RoundedCornerShape(6.dp))
+    )
+
+
+}
 @Composable
 fun ImagePortrait(index: Int,title:String,onClick:(index:Int)->Unit){
     if (index == 0) {
@@ -67,6 +83,30 @@ fun ImagePortrait(index: Int,title:String,onClick:(index:Int)->Unit){
 }
 
 @Composable
+fun ImagePortraitRelated(index: Int,title:String,onClick:(index:Int)->Unit){
+    if (index == 0) {
+        Spacer(modifier = Modifier.width(16.dp))
+    }
+    Column(
+        Modifier
+            .padding(top = 16.dp, bottom = 16.dp)
+            .clickable { onClick(index) }) {
+        Image(
+            contentScale = ContentScale.FillHeight,
+            painter = painterResource(id = R.drawable.marvel),
+            contentDescription = "",
+            modifier = Modifier
+                .width(130.dp)
+                .height(130.dp)
+                .padding(top = 4.dp, bottom = 4.dp)
+                .clip(shape = RoundedCornerShape(6.dp))
+        )
+        Text(text = title,style = MaterialTheme.typography.body2)
+    }
+    Spacer(modifier = Modifier.width(16.dp))
+}
+
+@Composable
 fun Section(title: String, onClick: (index: Int) -> Unit) {
     Column(modifier = Modifier.background(color = Color.White)) {
         Row(
@@ -82,6 +122,32 @@ fun Section(title: String, onClick: (index: Int) -> Unit) {
             items(10){
                 index:Int->
                 ImagePortrait(index = index,"Ini Judul",onClick = {onClick(index)})
+            }
+        }
+        Divider(
+            Modifier
+                .fillMaxWidth()
+                .padding(start = 16.dp, end = 16.dp))
+        Spacer(modifier = Modifier.width(16.dp))
+    }
+}
+
+@Composable
+fun SectionRelatedMovie(title: String, onClick: (index: Int) -> Unit) {
+    Column(modifier = Modifier.background(color = Color.White)) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 8.dp, bottom = 8.dp, start = 16.dp, end = 16.dp),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Text(text = title, style = MaterialTheme.typography.subtitle1)
+            Text(text = "View All", style = MaterialTheme.typography.subtitle2, color = Color.Blue)
+        }
+        LazyRow{
+            items(10){
+                    index:Int->
+                ImagePortraitRelated(index = index,"Ini Judul",onClick = {onClick(index)})
             }
         }
         Divider(
