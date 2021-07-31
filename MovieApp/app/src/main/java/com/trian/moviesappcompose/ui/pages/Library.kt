@@ -11,8 +11,9 @@ import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
-import com.trian.moviesappcompose.ui.common.CardItemLibrary
+import com.trian.moviesappcompose.ui.common.ItemLibrary
 import com.trian.moviesappcompose.ui.common.LibraryAppBar
+import com.trian.moviesappcompose.ui.common.Router
 import com.trian.moviesappcompose.ui.common.TextTab
 import kotlinx.coroutines.*
 /*
@@ -23,10 +24,10 @@ import kotlinx.coroutines.*
 * */
 @ExperimentalPagerApi
 @Composable
-fun Library(nav: NavHostController, coroutineScope: CoroutineScope){
+fun Library(nav: NavHostController, scope: CoroutineScope){
     val pagerState = rememberPagerState(pageCount = 2)
     fun movePage(index:Int){
-      coroutineScope.launch {
+      scope.launch {
           pagerState.animateScrollToPage(page = index)
       }
     }
@@ -36,22 +37,28 @@ fun Library(nav: NavHostController, coroutineScope: CoroutineScope){
             HorizontalPager(state = pagerState) {
                 page: Int ->
                 when(page){
-                    1-> PageListMovie()
-                    else -> PageListMovie()
+                    1->  LazyColumn(content = {
+                        items(count = 20,itemContent = {
+                                index: Int ->
+                                    ItemLibrary(index = index,onClick = {
+                                        nav.navigate(Router.DetailMovie.name)
+                                    })
+                        })
+                    })
+                    else ->  LazyColumn(content = {
+                        items(count = 20, itemContent = {
+                                index: Int ->
+                                    ItemLibrary(index = index, onClick = {
+                                        nav.navigate(Router.DetailMovie.name)
+                                    })
+                        })
+                    })
                 }
             }
         }
     }
 }
 
-@Composable
-fun PageListMovie(){
-    LazyColumn(content = {
-        items(count = 20,itemContent = {
-            index: Int -> CardItemLibrary()
-        })
-    })
-}
 
 @ExperimentalPagerApi
 @Preview
@@ -59,5 +66,5 @@ fun PageListMovie(){
 fun previewLibrary(){
 val nav = rememberNavController()
     val scope= rememberCoroutineScope()
-    Library(nav = nav, coroutineScope = scope)
+    Library(nav = nav, scope = scope)
 }

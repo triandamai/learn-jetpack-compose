@@ -25,10 +25,10 @@ enum class Router {
 fun Router(navController: NavHostController,coroutineScope: CoroutineScope){
     NavHost(navController = navController, startDestination = Router.Dashboard.name){
         composable(Router.Dashboard.name){
-            Dashboard(nav = navController)
+            Dashboard(nav = navController,scope = coroutineScope)
         }
         composable(Router.Library.name){
-            Library(nav = navController,coroutineScope=coroutineScope)
+            Library(nav = navController,scope=coroutineScope)
         }
         composable(Router.DetailMovie.name){
             DetailMovie(nav = navController,scope=coroutineScope)

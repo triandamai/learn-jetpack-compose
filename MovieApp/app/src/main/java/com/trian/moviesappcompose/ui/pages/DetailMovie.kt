@@ -1,7 +1,8 @@
 package com.trian.moviesappcompose.ui.pages
 
-import android.widget.Space
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.MoreVert
@@ -15,9 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.trian.moviesappcompose.ui.common.DetailAppBar
-import com.trian.moviesappcompose.ui.common.ImageHeaderDetailMovie
-import com.trian.moviesappcompose.ui.common.Section
+import com.trian.moviesappcompose.ui.common.*
 import kotlinx.coroutines.CoroutineScope
 /*
 * Created by: Trian Damai
@@ -33,9 +32,13 @@ fun DetailMovie(nav: NavHostController,scope:CoroutineScope){
         },
         content = {
             Column(
-                modifier = Modifier.padding(start = 16.dp, end = 16.dp,top = 8.dp,bottom = 8.dp),
+                modifier = Modifier
+                    .padding(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 8.dp)
+                    .verticalScroll(
+                        rememberScrollState()
+                    ),
                 content = {
-                    ImageHeaderDetailMovie()
+                    HeaderDetailMovie()
                     Spacer(modifier = Modifier.height(24.dp))
                     Row(
                         modifier= Modifier
@@ -88,7 +91,9 @@ fun DetailMovie(nav: NavHostController,scope:CoroutineScope){
                     Divider(modifier = Modifier
                         .fillMaxWidth()
                         .padding(start = 16.dp, end = 16.dp))
-                    Section(title = "Related to this movie", onClick ={
+                    SectionRelatedMovie(title = "Related to this movie", onClick ={
+
+                    },onViewAll = {
 
                     })
                 })
