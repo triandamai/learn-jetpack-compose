@@ -1,5 +1,10 @@
 package com.trian.moviesappcompose.ui.theme
-
+/*
+* Created by: Trian Damai
+* Created at: 31/07/2021
+* www.github.com/triandamai
+* www.trian.app
+* */
 import androidx.compose.ui.graphics.Color
 
 val Purple200 = Color(0xFFBB86FC)

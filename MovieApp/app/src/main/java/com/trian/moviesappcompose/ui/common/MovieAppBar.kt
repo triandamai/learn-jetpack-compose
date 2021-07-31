@@ -27,7 +27,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.trian.moviesappcompose.ui.theme.Black
 import com.trian.moviesappcompose.ui.theme.Red
-
+/*
+* Created by: Trian Damai
+* Created at: 31/07/2021
+* www.github.com/triandamai
+* www.trian.app
+* */
 @Composable
 fun DashboardAppBar(onNavigation:()->Unit){
     TopAppBar(

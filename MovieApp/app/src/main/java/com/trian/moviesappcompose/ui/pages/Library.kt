@@ -15,7 +15,12 @@ import com.trian.moviesappcompose.ui.common.CardItemLibrary
 import com.trian.moviesappcompose.ui.common.LibraryAppBar
 import com.trian.moviesappcompose.ui.common.TextTab
 import kotlinx.coroutines.*
-
+/*
+* Created by: Trian Damai
+* Created at: 31/07/2021
+* www.github.com/triandamai
+* www.trian.app
+* */
 @ExperimentalPagerApi
 @Composable
 fun Library(nav: NavHostController, coroutineScope: CoroutineScope){

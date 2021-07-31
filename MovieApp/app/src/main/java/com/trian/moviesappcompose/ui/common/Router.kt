@@ -10,6 +10,12 @@ import com.trian.moviesappcompose.ui.pages.DetailMovie
 import com.trian.moviesappcompose.ui.pages.Library
 import kotlinx.coroutines.CoroutineScope
 
+/*
+* Created by: Trian Damai
+* Created at: 31/07/2021
+* www.github.com/triandamai
+* www.trian.app
+* */
 enum class Router {
     Dashboard,Library,DetailMovie
 }

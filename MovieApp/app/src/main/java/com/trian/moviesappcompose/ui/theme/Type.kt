@@ -7,7 +7,12 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.trian.moviesappcompose.R
-
+/*
+* Created by: Trian Damai
+* Created at: 31/07/2021
+* www.github.com/triandamai
+* www.trian.app
+* */
 val Montserrat =FontFamily(
         Font(R.font.montserrat_regular),
         Font(R.font.montserrat_medium,FontWeight.W500),

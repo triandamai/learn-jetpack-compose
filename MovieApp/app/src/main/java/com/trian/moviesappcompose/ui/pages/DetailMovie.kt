@@ -19,7 +19,12 @@ import com.trian.moviesappcompose.ui.common.DetailAppBar
 import com.trian.moviesappcompose.ui.common.ImageHeaderDetailMovie
 import com.trian.moviesappcompose.ui.common.Section
 import kotlinx.coroutines.CoroutineScope
-
+/*
+* Created by: Trian Damai
+* Created at: 31/07/2021
+* www.github.com/triandamai
+* www.trian.app
+* */
 @Composable
 fun DetailMovie(nav: NavHostController,scope:CoroutineScope){
     Scaffold(

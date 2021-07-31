@@ -15,7 +15,12 @@ import com.trian.moviesappcompose.ui.common.DashboardAppBar
 import com.trian.moviesappcompose.ui.common.ImageScroll
 import com.trian.moviesappcompose.ui.common.Router
 import com.trian.moviesappcompose.ui.common.Section
-
+/*
+* Created by: Trian Damai
+* Created at: 31/07/2021
+* www.github.com/triandamai
+* www.trian.app
+* */
 @Composable
 fun Dashboard(modifier: Modifier = Modifier, nav: NavHostController) {
     Scaffold(topBar = {

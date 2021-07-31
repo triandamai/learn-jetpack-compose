@@ -8,7 +8,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.trian.moviesappcompose.ui.theme.HeavyGray
 import com.trian.moviesappcompose.ui.theme.MoviesAppComposeTheme
 import com.trian.moviesappcompose.ui.theme.Red
-
+/*
+* Created by: Trian Damai
+* Created at: 31/07/2021
+* www.github.com/triandamai
+* www.trian.app
+* */
 @Composable
 fun MainButton(text:String,onClick:()->Unit = {}){
     Button(onClick = onClick,modifier = Modifier,shape =  MaterialTheme.shapes.small,enabled = true,colors = ButtonDefaults.textButtonColors(backgroundColor = Red)) {
