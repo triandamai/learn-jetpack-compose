@@ -46,7 +46,7 @@ fun DashboardSection(title: String,listmovie:List<MovieModel>, onClick: (index: 
         LazyRow{
             items(listmovie.size){
                     index:Int->
-                ItemSection(index = index,"Ini Judul",onClick = {onClick(index)})
+                ItemSection(index = index,listmovie!![index].thumbnails,listmovie!![index].title,onClick = {onClick(index)})
             }
         }
         Divider(

@@ -44,13 +44,13 @@ fun Dashboard(modifier: Modifier = Modifier, nav: NavHostController,scope:Corout
                     .fillMaxWidth()
                     .padding(top = 8.dp, bottom = 8.dp)
             ) {
-                items(count = 4, itemContent = { index: Int ->
-                    ItemCorousel(index)
+                items(count = listMovie!!.size, itemContent = { index: Int ->
+                    ItemCorousel(index, listMovie!![index].thumbnails)
                 })
             }
             DashboardSection(
                 title = "Whats's New",
-                listmovie= listMovie,
+                listmovie= listMovie!!,
                 onClick = {
 
                     nav.navigate(Router.DetailMovie.name)
@@ -60,7 +60,7 @@ fun Dashboard(modifier: Modifier = Modifier, nav: NavHostController,scope:Corout
                 })
             DashboardSection(
                 title = "Recomended for you",
-                listmovie= listMovie,
+                listmovie= listMovie!!,
                 onClick = {
 
                     nav.navigate(Router.DetailMovie.name)

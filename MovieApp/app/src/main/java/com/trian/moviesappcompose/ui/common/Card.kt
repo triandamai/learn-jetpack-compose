@@ -28,7 +28,7 @@ import com.trian.moviesappcompose.R
 * */
 
 @Composable
-fun ItemLibrary(index: Int,onClick: (index: Int) -> Unit){
+fun ItemLibrary(index: Int,image:Int,onClick: (index: Int) -> Unit){
     Row(
         Modifier
             .background(color = Color.White)
@@ -36,7 +36,7 @@ fun ItemLibrary(index: Int,onClick: (index: Int) -> Unit){
             .padding(start = 16.dp, end = 16.dp)) {
         Image(
             contentScale = ContentScale.FillHeight,
-            painter = painterResource(id = R.drawable.marvel),
+            painter = painterResource(id = image),
             contentDescription = "",
             modifier = Modifier
                 .width(130.dp)
@@ -67,13 +67,13 @@ fun ItemLibrary(index: Int,onClick: (index: Int) -> Unit){
     }
 }
 @Composable
-fun ItemCorousel(index: Int) {
+fun ItemCorousel(index: Int,image:Int) {
     if (index == 0) {
         Spacer(modifier = Modifier.width(16.dp))
     }
     Image(
         contentScale = ContentScale.FillBounds,
-        painter = painterResource(id = R.drawable.marvel),
+        painter = painterResource(id = image),
         contentDescription = "",
         modifier = Modifier
             .clickable { }
@@ -86,14 +86,14 @@ fun ItemCorousel(index: Int) {
 
 }
 @Composable
-fun HeaderDetailMovie() {
+fun HeaderDetailMovie(index:Int,image:Int,onClick: (index: Int) -> Unit) {
 
     Image(
         contentScale = ContentScale.FillBounds,
-        painter = painterResource(id = R.drawable.marvel),
+        painter = painterResource(id = image),
         contentDescription = "",
         modifier = Modifier
-            .clickable { }
+            .clickable { onClick(index)}
             .fillMaxWidth()
             .height(200.dp)
             .padding(top = 4.dp, bottom = 4.dp)
@@ -103,7 +103,7 @@ fun HeaderDetailMovie() {
 
 }
 @Composable
-fun ItemSection(index: Int, title:String, onClick:(index:Int)->Unit){
+fun ItemSection(index: Int, image:Int,title:String, onClick:(index:Int)->Unit){
     if (index == 0) {
         Spacer(modifier = Modifier.width(16.dp))
     }
@@ -113,7 +113,7 @@ fun ItemSection(index: Int, title:String, onClick:(index:Int)->Unit){
             .clickable { onClick(index) }) {
         Image(
             contentScale = ContentScale.FillHeight,
-            painter = painterResource(id = R.drawable.marvel),
+            painter = painterResource(id = image),
             contentDescription = "",
             modifier = Modifier
                 .width(130.dp)
@@ -155,7 +155,7 @@ fun ItemSectionRelatedMovie(index: Int, title:String, onClick:(index:Int)->Unit)
 fun previewScrollImage() {
     LazyRow(modifier = Modifier.background(Color.White)) {
         items(5) { index: Int ->
-            ItemCorousel(index = index)
+            ItemCorousel(index = index,R.drawable.readyplayerone)
         }
     }
 }
@@ -165,13 +165,13 @@ fun previewScrollImage() {
 fun previewScrollImagePortrait() {
     LazyRow(modifier = Modifier.background(Color.White)) {
         items(5) { index: Int ->
-            ItemSection(index = index,"A",onClick = {})
+            ItemSection(index = index,R.drawable.marvel,"A",onClick = {})
         }
     }
 }
 @Preview
 @Composable
 fun previewCardItemLibrary(){
-    ItemLibrary(1){}
+    ItemLibrary(1,R.drawable.readyplayerone){}
 }
 

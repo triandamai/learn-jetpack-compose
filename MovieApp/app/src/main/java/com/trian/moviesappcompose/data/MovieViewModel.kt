@@ -14,11 +14,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.trian.moviesappcompose.data.models.MovieModel
+import com.trian.moviesappcompose.data.models.datumMovie
 
 class MovieViewModel:ViewModel() {
     private val listMovie= MutableLiveData<List<MovieModel>>()
     val getListMovie:LiveData<List<MovieModel>> get() = listMovie
 
+    init {
+        listMovie.value = datumMovie
+    }
     fun addMovie(movie:MovieModel){
 
     }

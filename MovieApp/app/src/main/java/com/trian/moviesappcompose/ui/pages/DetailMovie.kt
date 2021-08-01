@@ -8,6 +8,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.MoreVert
 import androidx.compose.material.icons.outlined.Star
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -16,8 +18,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.trian.moviesappcompose.data.MovieViewModel
 import com.trian.moviesappcompose.ui.common.*
 import kotlinx.coroutines.CoroutineScope
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.trian.moviesappcompose.R
+
 /*
 * Created by: Trian Damai
 * Created at: 31/07/2021
@@ -25,7 +31,8 @@ import kotlinx.coroutines.CoroutineScope
 * www.trian.app
 * */
 @Composable
-fun DetailMovie(nav: NavHostController,scope:CoroutineScope){
+fun DetailMovie(nav: NavHostController,scope:CoroutineScope,viewModel:MovieViewModel =viewModel()){
+    val listMovie by viewModel.getListMovie.observeAsState()
     Scaffold(
         topBar = {
             DetailAppBar(onNavigation = {})
@@ -38,7 +45,7 @@ fun DetailMovie(nav: NavHostController,scope:CoroutineScope){
                         rememberScrollState()
                     ),
                 content = {
-                    HeaderDetailMovie()
+                    HeaderDetailMovie(1,R.drawable.marvel,onClick = {})
                     Spacer(modifier = Modifier.height(24.dp))
                     Row(
                         modifier= Modifier
@@ -95,7 +102,8 @@ fun DetailMovie(nav: NavHostController,scope:CoroutineScope){
 
                     },onViewAll = {
 
-                    })
+                    },
+                    listmovie = listMovie!!)
                 })
         })
 }
